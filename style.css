@@ -1,11 +1,14 @@
 .page {
     display: flex;
+    gap: 50px;
+    justify-content: center;
 }
 
 .settings {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: center;
 }
 
 .container {
@@ -28,4 +31,12 @@
 
 .column:hover {
     background-color: rgb(223, 222, 222);
+}
+
+input[type="range"] {
+    width: 200px;
+}
+
+h1 {
+    text-align: center;
 }

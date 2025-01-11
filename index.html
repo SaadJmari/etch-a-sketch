@@ -9,19 +9,25 @@
 </head>
 
 <body>
+
     <div class="page">
         <div class="settings">
+            <h1>Etch-A-Sketch</h1>
+            <div class="gridSettings">
+                <label for="sizeInput">Grid size</label>
+                <input type="range" value="16" id="sizeInput" min="1" max="100"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output>16</output>
+            </div>
+            <button type="button" class="singleColor">Single colour mode</button>
             <div>
-                <label for="colorPicker">Pick a color: </label>
+
+                <label for="colorPicker">Pick a colour: </label>
                 <input type="color" class="colorPicker">
             </div>
 
-            <button type="button" class="singleColor">Pick a color</button>
-            <input type="range" value="16" id="sizeInput" min="1" max="100"
-                oninput="this.nextElementSibling.value = this.value">
-            <output>16</output>
-            <button type="button" class="randomiseBtn">Randomise</button>
-            <input type="button" value="Clear" class="clearBtn">
+            <button type="button" class="randomiseBtn">Randomise colours mode</button>
+            <input type="button" value="Clear the grid" class="clearBtn">
         </div>
         <div class="container"></div>
     </div>
