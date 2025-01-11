@@ -1,14 +1,19 @@
+//Important Variables
 const container = document.querySelector(".container");
 const colorPicker = document.querySelector(".colorPicker");
 const clearBtn = document.querySelector(".clearBtn");
 const gridSizeDisplay = document.querySelector("output").value;
 const gridSizeInput = document.querySelector("#sizeInput");
+const randomiseBtn = document.querySelector(".randomiseBtn");
+const singleColor = document.querySelector(".singleColor");
+let red, green, blue;
 let size = 16;
 
+//Event listeners
+randomiseBtn.addEventListener('click', randomiseColors);
+singleColor.addEventListener('click', enableColoring);
 
 //create a grid
-
-
 function createGrid(size) {
     container.textContent = '';
 
@@ -28,8 +33,7 @@ function createGrid(size) {
     enableColoring();
 }
 
-
-
+//Change the grid Size
 gridSizeInput.addEventListener('input', (e) => {
     const gridSize = e.target.value;
 
@@ -37,8 +41,7 @@ gridSizeInput.addEventListener('input', (e) => {
     createGrid(size);
 })
 
-
-
+//single color method
 function enableColoring() {
     //track mouse state
     let isDrawing = false;
@@ -62,6 +65,35 @@ function enableColoring() {
         cell.addEventListener("mouseover", () => {
             if (isDrawing) {
                 cell.style["background-color"] = colorPicker.value;
+            }
+        })
+    })
+}
+
+//randomise colors
+function randomiseColors() {
+    const columns = document.querySelectorAll(".column");
+
+    columns.forEach((cell) => {
+
+        cell.addEventListener("mousedown", () => {
+            isDrawing = true;
+            cell.style["background-color"] = `rgb(${red}, ${green}, ${blue})`;
+        })
+
+        //stop drawing
+        cell.addEventListener("mouseup", () => {
+            isDrawing = false;
+        })
+
+        //click and drag to color
+        cell.addEventListener("mouseover", () => {
+
+            if (isDrawing) {
+                red = Math.floor(Math.random() * 256);
+                green = Math.floor(Math.random() * 256);
+                blue = Math.floor(Math.random() * 256);
+                cell.style["background-color"] = `rgb(${red}, ${green}, ${blue})`;
             }
         })
     })
